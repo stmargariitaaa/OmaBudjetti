@@ -18,7 +18,7 @@ function App() {
           <Item />
           <Item />
           <Item />
-          <Button>LISÄÄ UUSI RIVI</Button>
+          <Button secondary>LISÄÄ UUSI RIVI</Button>
         </Content>
         <Menu />
       </div>
