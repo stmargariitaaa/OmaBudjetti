@@ -7,6 +7,8 @@ import Button from '../../shared/ui/buttons'
 import { ButtonContainer, FloatingButton } from '../../shared/ui/buttons'
 import Items from '../../pages/Items'
 import Stats from '../../pages/Stats'
+import Settings from '../../pages/Settings'
+
 
 
 function App() {
@@ -17,8 +19,7 @@ function App() {
       <div className={styles.app}>
         <Header />
         <Content>
-          <Stats />
-          
+          <Settings />
         </Content>
         <Menu />
       </div>
