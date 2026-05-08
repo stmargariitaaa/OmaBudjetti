@@ -6,10 +6,7 @@ import Content from '../Content'
 import Button from '../../shared/ui/buttons'
 import { ButtonContainer, FloatingButton } from '../../shared/ui/buttons'
 import Items from '../../pages/Items'
-
-
-
-
+import Stats from '../../pages/Stats'
 
 
 function App() {
@@ -20,12 +17,7 @@ function App() {
       <div className={styles.app}>
         <Header />
         <Content>
-          <Item />
-          <Item />
-          <Item />
-          <Item />
-          <Items />
-          <FloatingButton secondary>+</FloatingButton>
+          <Stats />
           
         </Content>
         <Menu />
