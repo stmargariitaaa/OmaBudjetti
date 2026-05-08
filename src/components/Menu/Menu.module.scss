@@ -1,0 +1,12 @@
+@use '../../assets/styles' as theme;
+
+.menu {
+  background-color: theme.$color-neutral-darker;
+  color: theme.$color-neutral-lighter;
+  max-height: 4rem;
+  min-height: 4rem;
+  font-size: 2rem;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
