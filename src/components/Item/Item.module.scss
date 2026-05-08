@@ -1,3 +1,5 @@
+@use '../../assets/styles' as theme;
+
 .item_data {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -5,15 +7,16 @@
 }
 
 .item {
-  color: #696963;
-  border-bottom: 1px dashed #C4C4C0;
+  color: theme.$color-neutral-dark;
+  border-bottom: 1px dashed theme.$color-neutral-light;
 }
+
 
 .item_amount, .item_timespan, .item_average {
   text-align: right;
 } 
 
 .item_type, .item_amount {
-  color: #000000;
+  color: theme.$color-neutral-darkest;
   font-weight: bold;
 }
