@@ -4,15 +4,17 @@ import Header from '../Header'
 import Menu from '../Menu'
 import Content from '../Content'
 import Button from '../../shared/ui/buttons'
-import { FloatingButton } from '../../shared/ui/buttons'
+import { ButtonContainer, FloatingButton } from '../../shared/ui/buttons'
+
 
 
 
 
 function App() {
 
-    return (
+      return (
     <>
+      <ButtonContainer>
       <div className={styles.app}>
         <Header />
         <Content>
@@ -24,8 +26,10 @@ function App() {
         </Content>
         <Menu />
       </div>
+      </ButtonContainer>
     </>
   )
+
 
 }
 
