@@ -1,0 +1,7 @@
+@use '../../assets/styles' as theme;
+
+.content {
+  overflow-y: auto;
+  scrollbar-color: theme.$color-neutral-lighter theme.$color-neutral-lightest;
+  scrollbar-width: thin;
+}
