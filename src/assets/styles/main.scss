@@ -52,3 +52,16 @@ h1 span {
   opacity: 0.7;
 }
 
+:root {
+  --color-primary: #{theme.$color-primary};
+  --color-secondary: #{theme.$color-secondary};
+  --color-warning: #{theme.$color-warning};
+  --color-neutral-lightest: #{theme.$color-neutral-lightest};
+  --color-neutral-lighter: #{theme.$color-neutral-lighter};
+  --color-neutral-light: #{theme.$color-neutral-light};
+  --color-neutral: #{theme.$color-neutral};
+  --color-neutral-dark: #{theme.$color-neutral-dark};
+  --color-neutral-darkest: #{theme.$color-neutral-darkest};
+}
+
+

@@ -23,6 +23,7 @@ function App() {
           <Item />
           <Item />
           <FloatingButton secondary>+</FloatingButton>
+          
         </Content>
         <Menu />
       </div>
