@@ -1,13 +1,13 @@
-import './App.css'
+import styles from './App.module.scss'
 import Item from '../Item'
 
 
 
 function App() {
 
-  return (
+    return (
     <>
-      <div>
+      <div className={styles.app}>
         <Item />
         <Item />
         <Item />
@@ -15,6 +15,7 @@ function App() {
       </div>
     </>
   )
+
 }
 
 export default App
