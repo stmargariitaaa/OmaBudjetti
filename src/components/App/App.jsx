@@ -5,6 +5,8 @@ import Menu from '../Menu'
 import Content from '../Content'
 import Button from '../../shared/ui/buttons'
 import { ButtonContainer, FloatingButton } from '../../shared/ui/buttons'
+import Items from '../../pages/Items'
+
 
 
 
@@ -22,6 +24,7 @@ function App() {
           <Item />
           <Item />
           <Item />
+          <Items />
           <FloatingButton secondary>+</FloatingButton>
           
         </Content>
