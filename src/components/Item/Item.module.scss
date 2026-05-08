@@ -4,12 +4,16 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 0.75rem;
+  flex: 1;
 }
+
 
 .item {
   color: theme.$color-neutral-dark;
   border-bottom: 1px dashed theme.$color-neutral-light;
+  display: flex;
 }
+
 
 
 .item_amount, .item_timespan, .item_average {
@@ -20,3 +24,19 @@
   color: theme.$color-neutral-darkest;
   font-weight: bold;
 }
+
+.item_edit {
+  max-width: 2rem;
+  min-width: 2rem;
+  background-color: theme.$color-neutral-lighter;
+  color: theme.$color-neutral-dark;
+  font-size: 1.75rem;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.item:hover .item_edit {
+  display: flex;
+}
+
