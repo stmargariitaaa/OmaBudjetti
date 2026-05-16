@@ -1,5 +1,5 @@
 import firebase from './firebase.js'
-import { collection, deleteDoc, doc, getFirestore, onSnapshot, orderBy, query, setDoc  } from 'firebase/firestore'
+import { addDoc, collection, deleteDoc, doc, getFirestore, onSnapshot, orderBy, query, setDoc  } from 'firebase/firestore'
 import { useEffect } from 'react'
 import AppRouter from '../../router/AppRouter/AppRouter'
 import { useState } from 'react'
@@ -10,7 +10,7 @@ function App() {
   const [data, setData] = useState([])
 
   // Sovelluksen kulutyypit, jotka välitetään eteenpäin reitittäjälle.
-  const [typelist, setTypelist] = useLocalStorage('omabudjetti-typelist',[])
+  const [typelist, setTypelist] = useState([])
 
   // Alustetaan Firestore-tietokantayhteys annetulla Firebase-sovelluksella.
   const firestore = getFirestore(firebase)
@@ -32,6 +32,24 @@ function App() {
     return unsubscribe
   }, [])
 
+
+  // useEffect-kuuntelija, joka hakee Firestoresta type-kokoelman
+  // type-kentät aakkosjärjestyksessä ja päivittää ne typelist-tilaan
+  // reaaliaikaisesti.
+  useEffect( () => {
+    const unsubscribe = onSnapshot(query(collection(firestore,'type'),
+                                         orderBy('type')),
+                                   snapshot => {
+      const newTypelist = []
+      snapshot.forEach( doc => {
+        newTypelist.push(doc.data().type)
+      })
+      setTypelist(newTypelist)
+    })
+    return unsubscribe
+  }, [])
+
+
   // Poistaa olemassa olevan tuotteen Firestore-tietokannasta
   // item-kokoelmasta annetun dokumentin id-tunnisteen perusteella.
   const handleItemDelete = async (id) => {
@@ -47,14 +65,9 @@ function App() {
   }
 
 
-  // Käsittelee uuden tyypin lisäyksen, lisää annetun
-  // type-arvon typelist-taulukkoon, järjestää listan
-  // ja päivittää staten.
-  const handleTypeSubmit = (type) => {
-    let copy = typelist.slice()
-    copy.push(type)
-    copy.sort()
-    setTypelist(copy)
+ // Tallentaa uuden tyypin Firestore-tietokannan type-kokoelmaan.
+  const handleTypeSubmit = async (type) => {
+    await addDoc(collection(firestore,'type'),{type: type})
   }
 
   return (
