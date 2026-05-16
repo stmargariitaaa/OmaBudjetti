@@ -43,7 +43,7 @@
   color: var(--neutral-lightest);
 }
 
-.warning {
+.button_warning {
   background-color: var(--warning);
   color: var(--neutral-lightest);
 }
