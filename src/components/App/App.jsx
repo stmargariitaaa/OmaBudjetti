@@ -1,12 +1,8 @@
-import AppRouter from "../../router/AppRouter/AppRouter.jsx";
+import AppRouter from "../../router/AppRouter/AppRouter.jsx"
+import testdata from './testdata.js'
 
 function App() {
-
-  return (
-    <>
-      <AppRouter />
-    </>
-  )
+  return <AppRouter data={testdata} />
 }
 
 export default App
