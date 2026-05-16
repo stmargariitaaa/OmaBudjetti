@@ -25,17 +25,21 @@ function App() {
   // sisältö muuttuu. Noudettavat tiedot lajitellaan maksupäivän mukaan
   // laskevasti.
   useEffect( () => {
-    const unsubscribe = onSnapshot(query(collection(firestore,'item'),
-                                         orderBy('paymentDate', 'desc')),
-                                   snapshot => {
-      const newData = []
-      snapshot.forEach( doc => {
-        newData.push({ ...doc.data(), id: doc.id })
+   if (user) {
+      const unsubscribe = onSnapshot(query(collection(firestore,`user/${user.uid}/item`),
+                                           orderBy('paymentDate', 'desc')),
+                                     snapshot => {
+        const newData = []
+        snapshot.forEach( doc => {
+          newData.push({ ...doc.data(), id: doc.id })
+        })
+        setData(newData)
       })
-      setData(newData)
-    })
-    return unsubscribe
-  }, [])
+      return unsubscribe
+    } else {
+      setData([])
+    }
+  }, [user])
 
 
   // useEffect-kuuntelija, joka seuraa Firebase Authenticationin
@@ -51,23 +55,27 @@ function App() {
   // type-kentät aakkosjärjestyksessä ja päivittää ne typelist-tilaan
   // reaaliaikaisesti.
   useEffect( () => {
-    const unsubscribe = onSnapshot(query(collection(firestore,'type'),
-                                         orderBy('type')),
-                                   snapshot => {
-      const newTypelist = []
-      snapshot.forEach( doc => {
-        newTypelist.push(doc.data().type)
-      })
-      setTypelist(newTypelist)
+    if (user) {
+      const unsubscribe = onSnapshot(query(collection(firestore,`user/${user.uid}/type`),
+                                           orderBy('type')),
+                                     snapshot => {
+        const newTypelist = []
+        snapshot.forEach( doc => {
+          newTypelist.push(doc.data().type)
+        })
+        setTypelist(newTypelist)
     })
     return unsubscribe
-  }, [])
+    } else {
+      setTypelist([])
+    }
+  }, [user])
 
 
   // Poistaa olemassa olevan tuotteen Firestore-tietokannasta
   // item-kokoelmasta annetun dokumentin id-tunnisteen perusteella.
   const handleItemDelete = async (id) => {
-    await deleteDoc(doc(firestore, 'item', id))
+    await deleteDoc(doc(firestore, `user/${user.uid}/item`, id))
   }
 
 
@@ -75,13 +83,14 @@ function App() {
   // item-kokoelmaan. Dokumentin tunnisteena käytetään newitem-olion
   // id-arvoa.
   const handleItemSubmit = async (newitem) => {
-    await setDoc(doc(firestore, 'item', newitem.id), newitem)
+    await setDoc(doc(firestore, `user/${user.uid}/item`, newitem.id), newitem)
+
   }
 
 
  // Tallentaa uuden tyypin Firestore-tietokannan type-kokoelmaan.
   const handleTypeSubmit = async (type) => {
-    await addDoc(collection(firestore,'type'),{type: type})
+    await addDoc(collection(firestore,`user/${user.uid}/type`),{type: type})
   }
 
   return (
