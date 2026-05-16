@@ -1,0 +1,5 @@
+@use '../../assets/styles' as theme;
+
+.edititem {
+  padding: theme.$padding-container;
+}
