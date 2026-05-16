@@ -1,6 +1,9 @@
 // Tuodaan Firebase-sovelluksen alustusfunktio.
 import { initializeApp } from 'firebase/app'
 
+// Tuodaan Firebase Authentication -palvelun alustusfunktio.
+import { getAuth } from 'firebase/auth'
+
 // Määritellään sovelluksen Firebase-asetukset.
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_APIKEY,
@@ -15,3 +18,4 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig)
 
 export default app
+export const auth = getAuth(app)

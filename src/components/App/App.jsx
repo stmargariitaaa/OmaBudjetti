@@ -1,13 +1,18 @@
-import firebase from './firebase.js'
+import firebase, { auth } from './firebase.js'
 import { addDoc, collection, deleteDoc, doc, getFirestore, onSnapshot, orderBy, query, setDoc  } from 'firebase/firestore'
 import { useEffect } from 'react'
 import AppRouter from '../../router/AppRouter/AppRouter'
 import { useState } from 'react'
 import useLocalStorage from '../../shared/hooks/uselocalstorage'
+import { onAuthStateChanged } from 'firebase/auth'
+import Startup from '../../pages/Startup'
 
 
 function App() {
   const [data, setData] = useState([])
+
+  // Sovellukseen kirjautuneen käyttäjän tiedot.
+  const [user, setUser] = useState()
 
   // Sovelluksen kulutyypit, jotka välitetään eteenpäin reitittäjälle.
   const [typelist, setTypelist] = useState([])
@@ -32,6 +37,15 @@ function App() {
     return unsubscribe
   }, [])
 
+
+  // useEffect-kuuntelija, joka seuraa Firebase Authenticationin
+  // kirjautumistilan muutoksia ja tallentaa kirjautuneen käyttäjän
+  // tiedot user-muuttujaan.
+  useEffect( () => {
+    onAuthStateChanged(auth, user => {
+      setUser(user)
+    })
+  }, [])
 
   // useEffect-kuuntelija, joka hakee Firestoresta type-kokoelman
   // type-kentät aakkosjärjestyksessä ja päivittää ne typelist-tilaan
@@ -71,11 +85,16 @@ function App() {
   }
 
   return (
-    <AppRouter data={data}
-                  typelist={typelist}
-                 onItemSubmit={handleItemSubmit}
-                 onItemDelete={handleItemDelete}
-                 onTypeSubmit={handleTypeSubmit} />
+    <>
+    { user ?
+          <AppRouter data={data}
+                     typelist={typelist}
+                     onItemSubmit={handleItemSubmit}
+                     onItemDelete={handleItemDelete}
+                     onTypeSubmit={handleTypeSubmit} />
+        : <Startup auth={auth} />
+      }
+      </>
   )
 }
 
