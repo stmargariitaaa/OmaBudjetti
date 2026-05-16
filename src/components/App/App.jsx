@@ -1,12 +1,13 @@
 import AppRouter from '../../router/AppRouter/AppRouter'
 import { useState } from 'react'
-import testdata from './testdata.js'
+import useLocalStorage from '../../shared/hooks/uselocalstorage'
+
 
 function App() {
-  const [data, setData] = useState(testdata)
+  const [data, setData] = useLocalStorage('omabudjetti-data',[])
 
   // Sovelluksen kulutyypit, jotka välitetään eteenpäin reitittäjälle.
-  const [typelist, setTypelist] = useState(["Auto", "Puhelin", "Sähkö", "Vero", "Vesi"])
+  const [typelist, setTypelist] = useLocalStorage('omabudjetti-typelist',[])
 
   // Poistaa rivin sovelluksen datasta id:n perusteella.
   const handleItemDelete = (id) => {
@@ -56,7 +57,7 @@ function App() {
     copy.sort()
     setTypelist(copy)
   }
-  
+
   return (
     <AppRouter data={data}
                   typelist={typelist}
