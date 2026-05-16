@@ -5,6 +5,8 @@ import Items from '../../pages/Items'
 import MainLayout from '../../layout/MainLayout'
 import Settings from '../../pages/Settings'
 import Stats from '../../pages/Stats'
+import AddItem from '../../pages/AddItem'
+
 
 function AppRouter({ data }) {
     const router = useMemo(() => createBrowserRouter([
@@ -19,7 +21,8 @@ function AppRouter({ data }) {
         loader: () => data,
       },
       { path: "stats", element: <Stats /> },
-      { path: "settings", element: <Settings /> }
+      { path: "settings", element: <Settings /> },
+      { path: "add", element: <AddItem /> },
     ]
   }
 ], {
