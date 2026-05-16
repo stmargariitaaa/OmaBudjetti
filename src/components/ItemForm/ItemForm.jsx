@@ -1,9 +1,12 @@
 import Button from '../../shared/ui/buttons'
+import { useNavigate } from 'react-router'
 import useForm from '../../shared/hooks/useform'
 import styles from './ItemForm.module.scss'
 
 function ItemForm(props) {
 
+    // React Routerin hook näkymien välistä siirtymistä varten
+  const navigate = useNavigate()
   // Lomakkeen varsinainen submit-toiminto
   const submit = () => {
     console.log(values)
@@ -23,9 +26,10 @@ function ItemForm(props) {
   // Haetaan lomakkeen state ja käsittelijät custom-hookista.
   const {values, handleChange, handleSubmit } = useForm(submit, initialState, false)
 
-  // Peruuta-painikkeen toiminto
+  // Peruuta-painikkeen toiminto. Ei tallenneta mitään,
+  // palataan takaisin.
   const handleCancel = () => {
-    alert('CANCEL')
+    navigate(-1, { viewTransition: true })
   }
 
   return (
