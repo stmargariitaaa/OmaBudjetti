@@ -1,0 +1,38 @@
+@use '../../assets/styles' as theme;
+
+.itemform {
+  display: flex;
+  flex-direction: column;
+}
+
+.itemform_row {
+  display: flex;
+  flex-direction: row;
+}
+
+.itemform_row > div {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  margin: 0.5rem 0.3rem;
+  width: 100%;
+}
+
+.itemform input, .itemform select {
+  padding: 0.5rem;
+  border: 1px solid theme.$color-neutral;
+  border-radius: 0.3rem;
+  font-size: 1.2rem;
+  outline: none;
+}
+
+.itemform label {
+  font-size: 0.8rem;
+  margin-bottom: 0.3rem;
+}
+
+@media screen and (max-width: 550px) {
+  .itemform_row {
+    flex-wrap: wrap;
+  }
+}
