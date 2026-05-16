@@ -19,10 +19,13 @@ function AppRouter(props) {
         { path: "",
           element: <Items />,
           loader: () => { return props.data } },
-        { path: "add", element: <AddItem onItemSubmit={props.onItemSubmit} /> },
+        { path: "add",
+          element: <AddItem onItemSubmit={props.onItemSubmit}
+                            typelist={props.typelist} /> },
         { path: "edit/:id",
           element: <EditItem onItemSubmit={props.onItemSubmit}
-                             onItemDelete={props.onItemDelete} />,
+                             onItemDelete={props.onItemDelete}
+                             typelist={props.typelist} />,
           loader: ({params}) => {
             const item = props.data.filter(item => item.id === params.id).shift()
             if (item) {

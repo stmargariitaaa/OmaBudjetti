@@ -12,7 +12,8 @@ function EditItem(props) {
       <h2>Merkinnän muokkaaminen</h2>
       <ItemForm onItemSubmit={props.onItemSubmit}
                 onItemDelete={props.onItemDelete}
-                formData={data.item} />
+                formData={data.item}
+                typelist={props.typelist} />
     </div>
   )
 
