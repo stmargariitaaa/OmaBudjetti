@@ -3,7 +3,7 @@ const testdata = [
     id:          "1",
     type:        "Sähkö",
     amount:      437.50,
-    paymentDate: "2023-04-07",
+    paymentDate: "2026-04-07",
     periodStart: "2026-01-01",
     periodEnd:   "2026-03-31",
     receiver:    "Caruna Oy"
