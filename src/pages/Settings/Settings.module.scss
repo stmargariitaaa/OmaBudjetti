@@ -1,0 +1,25 @@
+@use '../../assets/styles' as theme;
+
+.settings {
+  padding: theme.$padding-container;
+}
+
+.settings h3 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.2rem;
+  font-size: 1.2rem;
+}
+
+.settings_types {
+  padding: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.settings_types > div {
+  padding: 0.3rem;
+  border-radius: 0.2rem;
+}
+
+.settings_types > div:nth-child(odd) {
+  background-color: theme.$color-neutral-lighter;
+}
