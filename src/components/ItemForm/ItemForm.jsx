@@ -8,12 +8,13 @@ function ItemForm(props) {
     // React Routerin hook näkymien välistä siirtymistä varten
   const navigate = useNavigate()
   
-  // Lomakkeen varsinainen submit-toiminto, kutsuu
+    // Lomakkeen varsinainen submit-toiminto, kutsuu
   // App-komponentilta välitettyä handleItemSubmit-funtiota
   // ja palaa edelliseen näkymään.
   const submit = () => {
     let storedValues = Object.assign({}, values)
     storedValues.amount = parseFloat(storedValues.amount)
+    storedValues.id = crypto.randomUUID()
     props.onItemSubmit(storedValues)
     navigate(-1, { viewTransition: true })
   }
