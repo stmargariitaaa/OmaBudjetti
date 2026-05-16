@@ -47,11 +47,22 @@ function App() {
     setData(copy)
   }
 
+  // Käsittelee uuden tyypin lisäyksen, lisää annetun
+  // type-arvon typelist-taulukkoon, järjestää listan
+  // ja päivittää staten.
+  const handleTypeSubmit = (type) => {
+    let copy = typelist.slice()
+    copy.push(type)
+    copy.sort()
+    setTypelist(copy)
+  }
+  
   return (
     <AppRouter data={data}
                   typelist={typelist}
                  onItemSubmit={handleItemSubmit}
-                 onItemDelete={handleItemDelete} />
+                 onItemDelete={handleItemDelete}
+                 onTypeSubmit={handleTypeSubmit} />
   )
 }
 
