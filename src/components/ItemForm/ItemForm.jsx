@@ -28,9 +28,10 @@ function ItemForm(props) {
 
   // Peruuta-painikkeen toiminto. Ei tallenneta mitään,
   // palataan takaisin.
-  const handleCancel = () => {
-    navigate(-1, { viewTransition: true })
+    const handleCancel = () => {
+    navigate('/', { viewTransition: true })
   }
+  
 
   return (
     <div>
