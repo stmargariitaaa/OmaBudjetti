@@ -1,5 +1,5 @@
 import firebase from './firebase.js'
-import { collection, getFirestore, onSnapshot  } from 'firebase/firestore'
+import { collection, deleteDoc, doc, getFirestore, onSnapshot, setDoc  } from 'firebase/firestore'
 import { useEffect } from 'react'
 import AppRouter from '../../router/AppRouter/AppRouter'
 import { useState } from 'react'
@@ -29,45 +29,21 @@ function App() {
     return unsubscribe
   }, [])
 
-  // Poistaa rivin sovelluksen datasta id:n perusteella.
-  const handleItemDelete = (id) => {
-
-    // Tehdään kopio nykyisestä datasta.
-    let copy = data.slice()
-
-    // Suodatetaan pois se rivi, jonka id vastaa poistettavaa id:tä.
-    copy = copy.filter(item => item.id !== id)
-
-    // Päivitetään state suodatetulla datalla.
-    setData(copy)
-
+  // Poistaa olemassa olevan tuotteen Firestore-tietokannasta
+  // item-kokoelmasta annetun dokumentin id-tunnisteen perusteella.
+  const handleItemDelete = async (id) => {
+    await deleteDoc(doc(firestore, 'item', id))
   }
 
-  const handleItemSubmit = (newitem) => {
 
-    // Luodaan kopio nykyisestä datasta, jotta statea ei muuteta suoraan.
-    let copy = data.slice()
-    // Etsitään merkintää, jolla on sama id kuin tallennettavalla merkinnällä.
-    const index = copy.findIndex(item => item.id === newitem.id)
-    if (index >= 0) {
-      // Jos rivi löytyi taulukosta, kyseessä on muokkaus →
-      // korvataan vanha uudella
-      copy[index] = newitem
-    } else {
-      // Jos riviä ei löytynyt, kyseessä on lisäys.
-      copy.push(newitem)
-    }
-
-    // Järjestetään rivit maksupäivän mukaan (uusin ensin)
-    copy.sort((a, b) => {
-      const aDate = new Date(a.paymentDate)
-      const bDate = new Date(b.paymentDate)
-      return bDate - aDate
-    })
-    // Päivitetään sovelluksen state uudella, käsitellyllä datalla.
-    setData(copy)
+  // Tallentaa uuden tai päivitetyn tuotteen Firestore-tietokannan
+  // item-kokoelmaan. Dokumentin tunnisteena käytetään newitem-olion
+  // id-arvoa.
+  const handleItemSubmit = async (newitem) => {
+    await setDoc(doc(firestore, 'item', newitem.id), newitem)
   }
 
+  
   // Käsittelee uuden tyypin lisäyksen, lisää annetun
   // type-arvon typelist-taulukkoon, järjestää listan
   // ja päivittää staten.
