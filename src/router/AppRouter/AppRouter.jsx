@@ -6,6 +6,8 @@ import Items from '../../pages/Items'
 import MainLayout from '../../layout/MainLayout'
 import Settings from '../../pages/Settings'
 import Stats from '../../pages/Stats'
+import Loader from '../../pages/Loader'
+
 
 
 
@@ -15,6 +17,7 @@ function AppRouter(props) {
       path: "/",
       element: <MainLayout />,
       errorElement: <ErrorPage />,
+      hydrateFallbackElement: <Loader />,
       children: [
         { path: "",
           element: <Items />,

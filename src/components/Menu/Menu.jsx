@@ -19,14 +19,14 @@ import { MdSettings } from 'react-icons/md'
  */
 function Menu() {
 
-  return (
-        <div className={styles.menu}>
-      <div><NavLink to=""><MdViewList /></NavLink></div>
-      <div><NavLink to="/stats"><MdTimeline /></NavLink></div>
-      <div><NavLink to="/settings"><MdSettings /></NavLink></div>
+    return (
+    <div className={styles.menu}>
+      <div><NavLink to="" viewTransition><MdViewList /></NavLink></div>
+      <div><NavLink to="/stats" viewTransition><MdTimeline /></NavLink></div>
+      <div><NavLink to="/settings" viewTransition><MdSettings /></NavLink></div>
     </div>
-
   )
+
 
 }
 
