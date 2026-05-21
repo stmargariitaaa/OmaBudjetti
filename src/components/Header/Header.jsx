@@ -14,7 +14,10 @@ function Header() {
 
   return (
     <div className={styles.header}>
-      <h1><span>Oma</span>Bubjetti</h1>
+      <h1>
+        <span>Oma</span>
+        Budjetti
+      </h1>
     </div>
   )
 
