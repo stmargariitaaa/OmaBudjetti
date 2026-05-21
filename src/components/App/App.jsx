@@ -6,6 +6,8 @@ import { useState } from 'react'
 import useLocalStorage from '../../shared/hooks/uselocalstorage'
 import { onAuthStateChanged } from 'firebase/auth'
 import Startup from '../../pages/Startup'
+import { signOut } from 'firebase/auth'
+
 
 
 function App() {

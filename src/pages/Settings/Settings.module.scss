@@ -55,3 +55,17 @@
   border-radius: 50%;
   margin: 1rem;
 }
+
+.settings_avatar {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  margin: 1rem;
+  background-color: theme.$color-primary; // або будь-який колір з твоєї теми
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+}
