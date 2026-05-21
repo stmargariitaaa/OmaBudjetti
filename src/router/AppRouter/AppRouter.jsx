@@ -50,3 +50,38 @@ function AppRouter(props) {
 }
 
 export default AppRouter
+
+/**
+ * Sovelluksen reitityksestä vastaava komponentti.
+ *
+ * Komponentti:
+ * - määrittelee sovelluksen reitit React Routerin `createBrowserRouter`-funktion avulla
+ * - liittää näkymät yhteiseen `MainLayout`-asetteluun
+ * - määrittää virhesivun reitityksen virhetilanteita varten
+ * - välittää tarvittavat propsit eri sivukomponenteille
+ * - käyttää loader-funktioita datan välittämiseen reiteille
+ *
+ * Reitit:
+ * - `/` näyttää merkintöjen listauksen
+ * - `/add` näyttää uuden merkinnän lisäyslomakkeen
+ * - `/edit/:id` näyttää valitun merkinnän muokkauslomakkeen
+ * - `/stats` näyttää tilastonäkymän
+ * - `/settings` näyttää asetussivun
+ *
+ * @param {Object} props
+ * @param {Object[]} props.data - Merkinnät
+ * @param {string[]} props.typelist - Lista käytettävissä olevista kulutyypeistä
+ * @param {Function} props.onItemSubmit - Funktio, jota kutsutaan kun merkintä lisätään tai tallennetaan
+ * @param {Function} props.onItemDelete - Funktio, jota kutsutaan kun merkintä poistetaan
+ * @param {Function} props.onTypeSubmit - Funktio, jota kutsutaan kun uusi kulutyyppi lisätään
+ * @returns {JSX.Element} RouterProvider-komponentti, joka huolehtii sovelluksen reitityksestä
+ *
+ * @example
+ * <AppRouter
+ *   data={data}
+ *   typelist={typelist}
+ *   onItemSubmit={handleItemSubmit}
+ *   onItemDelete={handleItemDelete}
+ *   onTypeSubmit={handleTypeSubmit}
+ * />
+ */

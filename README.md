@@ -1,42 +1,43 @@
 # OmaBudjetti
 
-Harjoitustyönä toteutettu React-projekti, jolla voi kirjata ja seurata omia menoja.
+A React project implemented as a practice assignment that allows users to record and track their personal expenses.
 
-## Kuvaruutukopiot
+## Screenshots
 
-![Pääsivu](/screenshot1.png?raw=true)
+![Main Page](/screenshot1.png?raw=true)
 
-## Tekniikat
+## Technologies
 
-Projektin on toteutetuksessa on hyödynnetty mm. seuraavia tekniikoita: 
- - React
- - React Router
- - React Icons ja
- - Recharts.
+The project was implemented using, among others, the following technologies:
 
-Projektin testauksessa on hyödynnetty seuraavia tekniikoita:
- - Vitest (jest) ja
- - React Testing Library.
+* React
+* React Router
+* React Icons, and
+* Recharts.
 
-## Asennus ja käyttö
+The following technologies were used for testing the project:
 
-Tämän projektin käyttäminen edellyttää,  että `node`- ja `npm`-sovellukset on asennettu.
+* Vitest (jest), and
+* React Testing Library.
 
-1. Lataa tai kloonaa tämä repo.
-2. Suorita projektikansiossa komento `npm install`.
-3. Käynnistä testausympäristö komennolla `npm run test`.
-4. Käynnistä kehitysympäristö komennolla `npm run dev`. 
-5. Testaa sovellusta osoitteessa [http://localhost:5173](http://localhost:5173).
+## Installation and Usage
 
-## Projektin tila
+To use this project, the `node` and `npm` applications must be installed.
 
-Tämä projekti on valmis, pienet korjauspäivitykset ovat mahdollisia.
+1. Download or clone this repository.
+2. Run the command `npm install` in the project directory.
+3. Start the testing environment with the command `npm run test`.
+4. Start the development environment with the command `npm run dev`.
+5. Test the application at [http://localhost:5186/](http://localhost:5186/).
 
-## Ylläpitäjä
+## Project Status
 
-Tätä projektia ylläpitää [Pekka Tapio Aalto](https://github.com/pekkatapio). 
+This project is complete, though minor bug-fix updates may still be made.
 
-## Lisenssi
+## Maintainer
 
-Tämä projekti on julkaistu lisenssillä [MIT license](LICENSE).
+This project is maintained by [Marharyta Starodubtseva](https://github.com/stmargariitaaa).
 
+## License
+
+This project is published under the [MIT License](LICENSE).

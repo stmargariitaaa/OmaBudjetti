@@ -119,3 +119,49 @@ function ItemForm(props) {
 
 
 export default ItemForm
+
+/**
+ * Lomakekomponentti budjettimerkinnän lisäämiseen ja muokkaamiseen.
+ *
+ * Komponentti:
+ * - näyttää lomakkeen merkinnän syöttämistä varten
+ * - käyttää `useForm`-hookia lomaketilan hallintaan
+ * - kutsuu App-komponentilta saatuja callback-funktioita (lisäys, poisto)
+ * - huolehtii navigoinnista näkymien välillä
+ *
+ * Käyttötarkoitus:
+ * - uuden merkinnän luonti
+ * - olemassa olevan merkinnän muokkaus
+ *
+ * @param {Object} props
+ * @param {Object} [props.formData] - Muokattavan rivin tiedot (jos olemassa)
+ * @param {Array<string>} props.typelist - Lista käytettävistä kulutyypeistä
+ * @param {Function} props.onItemSubmit - Funktio merkinnän tallentamiseen
+ * @param {Function} [props.onItemDelete] - Funktio merkinnän poistamiseen
+ * @returns {JSX.Element} Lomakenäkymä merkinnän käsittelyyn
+ *
+ * @example
+ * // Uuden merkinnän lisääminen
+ * <ItemForm
+ *   typelist={['Ruoka', 'Asuminen', 'Liikenne']}
+ *   onItemSubmit={handleItemSubmit}
+ * />
+ *
+ * @example
+ * // Olemassa olevan merkinnän muokkaaminen
+ * <ItemForm
+ *   formData={{
+ *     id: '123',
+ *     type: 'Ruoka',
+ *     amount: 12.5,
+ *     paymentDate: '2026-05-12',
+ *     periodStart: '',
+ *     periodEnd: '',
+ *     receiver: 'K-Market'
+ *   }}
+ *   typelist={['Ruoka', 'Asuminen', 'Liikenne']}
+ *   onItemSubmit={handleItemSubmit}
+ *   onItemDelete={handleItemDelete}
+ * />
+ */
+

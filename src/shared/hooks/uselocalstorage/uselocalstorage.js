@@ -32,7 +32,7 @@ const encode = (value) => {
  *
  * @param {string} key - localStorage-avain, jonka alle arvo tallennetaan.
  * @param {*} defaultState - Oletusarvo, jota käytetään jos localStoragesta ei löydy tallennettua arvoa.
- * @returns {[*, Function, Function]} Taulukko, joka sisältää nykyisen arvon, tilan päivitysfunktion ja reset-funktion.
+ * @returns {Array<*>} Taulukko muodossa [value, setValue, reset]
  */
 const useLocalStorage = (key, defaultState) => {
 

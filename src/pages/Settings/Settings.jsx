@@ -1,7 +1,5 @@
 import Button from '../../shared/ui/buttons'
 import styles from './Settings.module.scss'
-import { signOut } from 'firebase/auth'
-
 
 
 function Settings(props) {
@@ -21,17 +19,7 @@ function Settings(props) {
   return (
     <div className={styles.settings}>
       <h2>Asetukset</h2>
-      <h3>Profiili</h3>
-      <div className={styles.settings_profile}>
-        <div className={styles.settings_user}>
-          <div><img src={props.user.photoURL} /></div>
-          <div>{props.user.displayName}<br />
-               {props.user.email}</div>
-        </div>
-        <div>
-          <Button primary onClick={logout}>Kirjaudu ulos</Button>
-        </div>
-      </div>
+      
       <h3>Kulutyypit</h3>
       <div className={styles.settings_types}>
         { props.typelist.map(
@@ -50,3 +38,22 @@ function Settings(props) {
 }
 
 export default Settings
+
+/**
+ * Sovelluksen asetussivu kulutyyppien hallintaan.
+ *
+ * Komponentti:
+ * - näyttää listan olemassa olevista kulutyypeistä
+ * - tarjoaa lomakkeen uuden kulutyypin lisäämiseen
+ *
+ * @param {Object} props
+ * @param {string[]} props.typelist - Lista olemassa olevista kulutyypeistä
+ * @param {Function} props.onTypeSubmit - Funktio, jota kutsutaan kun uusi kulutyyppi lisätään
+ * @returns {JSX.Element} Näkymä, joka sisältää kulutyyppien listan ja lisäyslomakkeen
+ *
+ * @example
+ * <Settings
+ *   typelist={['Ruoka', 'Asuminen', 'Liikenne']}
+ *   onTypeSubmit={handleTypeSubmit}
+ * />
+ */

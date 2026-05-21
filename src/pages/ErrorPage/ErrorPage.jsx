@@ -14,3 +14,15 @@ function ErrorPage() {
 }
 
 export default ErrorPage
+
+/**
+ * Virhesivu sovelluksen reititykseen liittyville virhetilanteille.
+ *
+ * Komponentti:
+ * - hakee virheen tiedot React Routerin `useRouteError`-hookilla
+ * - näyttää käyttäjälle geneerisen virheilmoituksen
+ * - tulostaa tarkemman virhekuvauksen (statusText tai message)
+ *
+ * @returns {JSX.Element} Virhenäkymä, joka sisältää otsikon ja virheen kuvauksen
+ */
+
