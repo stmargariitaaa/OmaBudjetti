@@ -1,0 +1,10 @@
+{
+  "name": "OmaBudjetti",
+  "short_name": "OB",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#1F3A8A",
+  "background_color": "#1F3A8A"
+}

@@ -1,6 +1,8 @@
 /// <reference types="vitest/config" />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { VitePWA } from 'vite-plugin-pwa';
+import manifest from './manifest.json';
 
 // https://vite.dev/config/
 import path from 'node:path';
@@ -11,7 +13,8 @@ const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(file
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(),
+            VitePWA({ manifest: manifest })],
   test: {
     projects: [{
       extends: true,
